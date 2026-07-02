@@ -733,34 +733,22 @@ function renderHealthcare() {
         <h3>${lang.keyTerms}</h3>
 
         <details>
-            <summary>
-              ${g.nationalIdTitle}
-              <button class="term-help" onclick="event.stopPropagation(); openHelp('nationalId')">?</button>
-            </summary>
+            <summary>${g.nationalIdTitle}</summary>
           <p>${g.nationalIdDesc}</p>
         </details>
 
         <details>
-          <summary>
-            ${g.dNumberTitle}
-            <button class="term-help" onclick="event.stopPropagation(); openHelp('dNumber')">?</button>
-          </summary>
+          <summary>${g.nationalIdTitle}</summary>
           <p>${g.dNumberDesc}</p>
         </details>
 
         <details>
-          <summary>
-            ${g.fastlegeTitle}
-            <button class="term-help" onclick="event.stopPropagation(); openHelp('fastlege')">?</button>
-          </summary>
+          <summary>${g.nationalIdTitle}</summary>
           <p>${g.fastlegeDesc}</p>
         </details>
 
         <details>
-          <summary>
-            ${g.bankIdTitle}
-            <button class="term-help" onclick="event.stopPropagation(); openHelp('bankid')">?</button>
-          </summary>
+          <summary>${g.nationalIdTitle}</summary>
           <p>${g.bankIdDesc}</p>
         </details>
 
