@@ -300,19 +300,6 @@ details p {
   color: #555;
 }
 
-
-.term-help {
-  float: right;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: none;
-  background: #0057ff;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
 .floating-help {
   position: sticky;
   bottom: 16px;
