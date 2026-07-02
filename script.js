@@ -733,22 +733,34 @@ function renderHealthcare() {
         <h3>${lang.keyTerms}</h3>
 
         <details>
-          <summary>${g.nationalIdTitle}</summary>
+            <summary>
+              ${g.nationalIdTitle}
+              <button class="term-help" onclick="event.stopPropagation(); openHelp('nationalId')">?</button>
+            </summary>
           <p>${g.nationalIdDesc}</p>
         </details>
 
         <details>
-          <summary>${g.dNumberTitle}</summary>
+          <summary>
+            ${g.dNumberTitle}
+            <button class="term-help" onclick="event.stopPropagation(); openHelp('dNumber')">?</button>
+          </summary>
           <p>${g.dNumberDesc}</p>
         </details>
 
         <details>
-          <summary>${g.fastlegeTitle}</summary>
+          <summary>
+            ${g.fastlegeTitle}
+            <button class="term-help" onclick="event.stopPropagation(); openHelp('fastlege')">?</button>
+          </summary>
           <p>${g.fastlegeDesc}</p>
         </details>
 
         <details>
-          <summary>${g.bankIdTitle}</summary>
+          <summary>
+            ${g.bankIdTitle}
+            <button class="term-help" onclick="event.stopPropagation(); openHelp('bankid')">?</button>
+          </summary>
           <p>${g.bankIdDesc}</p>
         </details>
 
@@ -770,6 +782,10 @@ function renderHealthcare() {
 
         ${lang.button}
 
+      </button>
+
+      <button class="floating-help" onclick="openHelp('general')">
+        Ask about this step
       </button>
 
     </div>
@@ -914,5 +930,65 @@ function renderOfficialHealthcare() {
     </div>
   `;
 }
+function openHelp(topic = "general") {
+  const popup = document.createElement("div");
+  popup.className = "popup-overlay";
 
+  popup.innerHTML = `
+    <div class="popup-box">
+      <button class="popup-close" onclick="this.parentElement.parentElement.remove()">×</button>
+
+      <h3>Ask about this step</h3>
+
+      <p class="ai-answer" id="ai-answer">
+        Ask a question about healthcare registration, Fastlege, D-number, National ID, or BankID.
+      </p>
+
+      <input
+        class="input"
+        id="ai-question"
+        placeholder="Type your question here..."
+      >
+
+      <button class="primary-btn" onclick="answerQuestion()">
+        Ask
+      </button>
+
+      <div class="suggestions">
+        <button onclick="quickQuestion('What is Fastlege?')">What is Fastlege?</button>
+        <button onclick="quickQuestion('Can I use D-number?')">Can I use D-number?</button>
+        <button onclick="quickQuestion('Do I need BankID?')">Do I need BankID?</button>
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(popup);
+}
+
+function quickQuestion(question) {
+  document.getElementById("ai-question").value = question;
+  answerQuestion();
+}
+
+function answerQuestion() {
+  const question = document.getElementById("ai-question").value.toLowerCase();
+  const answer = document.getElementById("ai-answer");
+
+  if (question.includes("fastlege") || question.includes("gp")) {
+    answer.innerText =
+      "Fastlege means your regular GP or family doctor in Norway. You usually contact your Fastlege first for non-emergency health problems.";
+  } else if (question.includes("d-number") || question.includes("d number")) {
+    answer.innerText =
+      "A D-number is temporary. Some healthcare rights may be limited if you only have a D-number. Check the official Helsenorge page for your situation.";
+  } else if (question.includes("bankid")) {
+    answer.innerText =
+      "BankID is often used to log in to Norwegian digital services. It is helpful, but some information can still be read without logging in.";
+  } else if (question.includes("national") || question.includes("id")) {
+    answer.innerText =
+      "A Norwegian National ID number is often needed before you can access many public services, including healthcare and banking.";
+  } else {
+    answer.innerText =
+      "This is a demo assistant. It gives general guidance only. For official action, always use the Helsenorge website.";
+  }
+}
 goTo('welcome');
