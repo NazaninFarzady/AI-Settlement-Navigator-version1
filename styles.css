@@ -299,3 +299,81 @@ details p {
   margin-top: 8px;
   color: #555;
 }
+
+
+.term-help {
+  float: right;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: #0057ff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.floating-help {
+  position: sticky;
+  bottom: 16px;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #111827;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  width: 320px;
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  line-height: 1.5;
+}
+
+.popup-close {
+  float: right;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+}
+.ai-answer {
+  background: #f5f7fb;
+  padding: 14px;
+  border-radius: 12px;
+  margin: 14px 0;
+  line-height: 1.5;
+}
+
+.suggestions {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+.suggestions button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 10px;
+  cursor: pointer;
+}
